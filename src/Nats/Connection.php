@@ -599,11 +599,11 @@ class Connection
      *
      * @return Connection $connection Connection object
      */
-    public function wait($quantity = 0, $stop = false )
+    public function wait($quantity = 0 )
     {
         $count = 0;
         $info  = stream_get_meta_data($this->streamSocket);
-        while (is_resource($this->streamSocket) === true && feof($this->streamSocket) === false && !$stop) {
+        while (is_resource($this->streamSocket) === true && feof($this->streamSocket) === false ) {
             $line = $this->receive();
 
             if ($line === false) {
