@@ -603,7 +603,7 @@ class Connection
     {
         $count = 0;
         $info  = stream_get_meta_data($this->streamSocket);
-        while (is_resource($this->streamSocket) === true && feof($this->streamSocket) === false && empty($info['timed_out']) === true) {
+        while (is_resource($this->streamSocket) === true && feof($this->streamSocket) === false) {
             $line = $this->receive();
 
             if ($line === false) {
@@ -625,7 +625,7 @@ class Connection
             $info = stream_get_meta_data($this->streamSocket);
         }
 
-        $this->close();
+        //$this->close();
 
         return $this;
     }
